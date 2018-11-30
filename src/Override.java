@@ -1,21 +1,17 @@
-package com.yy.base;
 
-/**
- * 保证线程t1、t2、t3顺序执行
- */
-public class SortedExecute {
+public class Override {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Thread t1 = new Thread(new Runnable() {
-            @Override
+            @java.lang.Override
             public void run() {
                 for (int i=0; i<20; i++) {
-                    System.out.println("t1线程执行中......." + i);
+                    System.out.println("线程t1运行中：" + i);
                 }
             }
         });
         Thread t2 = new Thread(new Runnable() {
-            @Override
+            @java.lang.Override
             public void run() {
                 try {
                     t1.join();
@@ -23,12 +19,12 @@ public class SortedExecute {
                     e.printStackTrace();
                 }
                 for (int i=0; i<20; i++) {
-                    System.out.println("t2线程执行中......." + i);
+                        System.out.println("线程t2运行中：" + i);
                 }
             }
         });
         Thread t3 = new Thread(new Runnable() {
-            @Override
+            @java.lang.Override
             public void run() {
                 try {
                     t2.join();
@@ -36,7 +32,7 @@ public class SortedExecute {
                     e.printStackTrace();
                 }
                 for (int i=0; i<20; i++) {
-                    System.out.println("t3线程执行中......." + i);
+                    System.out.println("线程t3运行中：" + i);
                 }
             }
         });
@@ -44,4 +40,5 @@ public class SortedExecute {
         t2.start();
         t3.start();
     }
+
 }
